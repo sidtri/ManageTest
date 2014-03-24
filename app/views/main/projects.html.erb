@@ -1,0 +1,43 @@
+<%= link_to 'Add Project',project_path,:class=>'btn btn-default pull-right' %>
+<legend>Projects Status Reports</legend>
+
+<table class='table table-bordered table-hover table-condensed' >
+	<thead>
+		<tr style="color:#777">
+			<th>Project Name</th>
+			<th>SRS</th>
+			<th>BRS</th>
+			<th>Time</th>
+			<th>Testing</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+	<% @mypjts.each do |project|  %>
+	<tr style="color:#999">
+			<th><%=link_to project.name , monitor_show_path(project.id),:class => 'my-link' %></th>
+			<th><img src="/assets/<%= @randvar[rand(0..2)]  %>.png" width="20" height="20"></th>
+			<th><img src="/assets/<%= @randvar[rand(0..2)]  %>.png" width="20" height="20"></th>
+			<th><img src="/assets/<%= @randvar[rand(0..2)]  %>.png" width="20" height="20"></th>
+			<th><img src="/assets/<%= @randvar[rand(0..2)]  %>.png" width="20" height="20"></th>
+			
+		</tr>
+		
+	<% end%>
+	</tbody>
+</table>
+<script>
+	$('.my-link').click(function (event) {
+  		var href= $(this).attr('href');
+      
+      // do animation
+      $('.bodyclass').fadeOut( 600, function(){
+            // go to link when animation completes
+            window.location=href;
+
+      })
+
+      // over ride browser following link when clicked
+      return false;
+	});
+</script>

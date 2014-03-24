@@ -1,0 +1,36 @@
+<!-- <form role="form" action='project' method='post'>
+<legend>Create Project</legend>
+  <div class="form-group">
+    <label for="name">Project Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Project Name">
+  </div>
+  <div class="form-group">
+    <label for="content">content</label>
+    <input type="text-area" class="form-control" id="content" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Place Here Srs or Brs </p>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+ -->
+
+
+<%= form_tag project_path, :method => 'post',:multipart => true do  %>
+<legend>Create Project</legend>
+    <div class="form-group">
+    <%= label_tag :name,'Project Name' %><br>
+    <%= text_field_tag :name,nil,:class=> 'form-control',:html=>{:multipart=> true} %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :content, 'Content' %><br>
+    <%= text_area_tag :content,nil,:class=> 'form-control' %><br />
+  </div>
+  <div class="form-group">
+  <%= file_field_tag 'upload[file]',:class=> 'form-control btn btn-info' %> <hr>
+  </div> 
+  <%= submit_tag 'submit',:class=> 'btn btn-default' %>
+
+<% end %>

@@ -1,0 +1,23 @@
+<ol class="breadcrumb">
+  <li><a href="<%=root_path %>">Projects</a></li>
+  <li><a href="<%=initiate_path %>">Testers</a></li>
+  <li class="tester_index_path">Data</li>
+</ol>
+
+<table class='table'>
+<tbody><tr>
+<th>Start Date</th>
+<th>Project </th>
+<th>Tester</th>
+<th>Environment</th>
+</tr>
+</tbody>
+	<%@initiation.each do |i| %>
+	<tr>
+	<td class='code'><%= i.created_at.strftime('%d - %m - %Y') %></td>
+	<td><%= i.project.name %></td>
+	<td><%= i.name %></td>
+	<td><%= i.environment %></td>
+	</tr>
+	<%end %>
+</table>

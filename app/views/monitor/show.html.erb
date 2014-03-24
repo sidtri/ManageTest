@@ -1,0 +1,35 @@
+<div class='highlight'><center><b><%= Project.find(params[:id]).name%></b></center></div>
+<%=link_to 'Initiate Testing',pinitiate_path(params[:id]),:class=>'btn btn-default pull-right' %>
+
+<ol class="breadcrumb">
+  <li><a href="<%=root_path %>">Projects</a></li>
+  <li><a href="<%=initiate_path %>">Testers</a></li>
+  <li class="tester_index_path">Data</li>
+</ol>
+
+<table class='table'>
+<tbody><tr>
+<th>In Date</th>
+<th>Project </th>
+<th>Tester</th>
+<th>Environment</th>
+<th>Out Date</th>
+</tr>
+</tbody>
+	<%@initiation.each do |i| %>
+	<tr>
+	<td class='code'><%= i.created_at.strftime('%d - %m - %Y') %></td>
+	<td><%= i.project.name %></td>
+	<td><%= i.name %></td>
+	<td><%= i.environment %></td>
+	<td class='code'><%= i.updated_at.strftime('%d - %m - %Y') %></td>
+	</tr>
+	<%end %>
+</table>
+
+<!-- 
+<div class="files">
+<span class='fil'></span>
+</div> -->
+
+<div class='imgforheader'><h4 style='padding-left:100px;min-height:40px;padding-top:15px;width:500px'> <a href='/images/upload/<%=@down.kick %>'>Kickoff MOM</a></h4></div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Project Monitoring</title>
+  <!-- *<script language="javascript" type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+  </script> */ -->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%=link_to 'Home',root_url,:class=> 'btn btn-default pull-right' %>
+<div class="bcheight">
+
+<%= yield %>
+</div>
+<script>
+jQuery(document).ready(function(){
+	$('.bcheight').hide().fadeIn(3000);
+});
+</script>
+
+
+</body>
+</html>
