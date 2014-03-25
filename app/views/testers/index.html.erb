@@ -4,20 +4,16 @@
   <li class="tester_index_path">Data</li>
 </ol>
 
-<table class='table'>
-<tbody><tr>
-<th>Start Date</th>
-<th>Project </th>
-<th>Tester</th>
-<th>Environment</th>
-</tr>
-</tbody>
-	<%@initiation.each do |i| %>
-	<tr>
-	<td class='code'><%= i.created_at.strftime('%d - %m - %Y') %></td>
-	<td><%= i.project.name %></td>
-	<td><%= i.name %></td>
-	<td><%= i.environment %></td>
-	</tr>
+<h4 class='text-left' style="color:#679BB7;">Test Requests</h4><hr>
+
+	<%@requests.each do |r| %>
+	<div class="block" style="border:1px solid #e3e3e3;padding-top:5px;padding-bottom:5px;margin-bottom:5px;border-radius:4px;padding-left:8px;padding-right:8px;">
+	
+	<p><span class="code"><%= r.project.name %></span> <%= r.status %></p>
+		<%= r.content %>
+	<%=link_to 'Manage',tester_manage_path(r.project_id,r.id),:class=>'pull-right btn btn-info ' %>
+	 <p style="color:#999">From : <%= r.dev %> Assigned on <%= r.created_at.strftime('%d - %m - %Y')%></p>
+	
+	
+	</div>
 	<%end %>
-</table>

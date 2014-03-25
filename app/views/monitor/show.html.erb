@@ -1,13 +1,18 @@
-<div class='highlight'><center><b><%= Project.find(params[:id]).name%></b></center></div>
-<%=link_to 'Initiate Testing',pinitiate_path(params[:id]),:class=>'btn btn-default pull-right' %>
 
-<ol class="breadcrumb">
+<div class='highlight'><center><b><%= Project.find(params[:id]).name%></b></center></div>
+
+<span class="badge pull-right">0</span>
+<%=link_to 'Inbox',tester_index_path,:class=>'btn btn-default pull-right' %>
+
+
+<ol class="breadcrumb pull-left">
   <li><a href="<%=root_path %>">Projects</a></li>
   <li><a href="<%=initiate_path %>">Testers</a></li>
   <li class="tester_index_path">Data</li>
 </ol>
 
 <table class='table'>
+<caption class="text-left" style="color:#679BB7;">Test Progress</caption>
 <tbody><tr>
 <th>In Date</th>
 <th>Project </th>
@@ -31,5 +36,6 @@
 <div class="files">
 <span class='fil'></span>
 </div> -->
-
+<%if @down!=nil %>
 <div class='imgforheader'><h4 style='padding-left:100px;min-height:40px;padding-top:15px;width:500px'> <a href='/images/upload/<%=@down.kick %>'>Kickoff MOM</a></h4></div>
+<%end %>

@@ -11,10 +11,13 @@ Tester::Application.routes.draw do  # The priority is based upon order of creati
   match '/initiate',to:'testers#create',via:'post'
   match '/project/:project_id/initiate',to:'testers#initiate',as: 'pinitiate',via:'get'
   match '/tester/:id/show',to:'testers#show',as: 'tester_show',via:'get'
+  match '/tester/:id/manage/:req_id',to:'testers#manage',as: 'tester_manage',via:'get'
+  match '/tester/:id/manage/:req_id',to:'testers#ack',via:'post'
 
   #These routes are for monitoring the project
+   match '/project/:id/index',to:'monitor#index',as: 'monitor_index',via:'get'
    match '/project/:id/show',to:'monitor#show',as: 'monitor_show',via:'get'
-   match '/project/:id/new',to:'monitor#new',as: 'upls',via:'get'
+   match '/project/:id/new',to:'monitor#new',as: 'test_request',via:'get'
    match '/project/:id/new',to:'monitor#create',via:'post'
 
    

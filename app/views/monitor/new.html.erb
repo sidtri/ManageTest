@@ -1,0 +1,19 @@
+
+<%= form_tag test_request_path, :method => 'post',:multipart => true do  %>
+<legend>Test Request</legend>
+    <div class="form-group">
+    <span class='code'><%= label_tag :Project_name,nil,:class=>'form-inline' %>
+    <%= Project.find(params[:id]).name.capitalize %></span>
+    </div>
+    <div class="form-group">
+    <%= label_tag :name,'Developer' %><br>
+    <%= text_field_tag :name,nil,:class=>'form-control' %>
+    </div>
+  <div class="form-group">
+    <%= label_tag :content, 'Content' %><br>
+    <%= text_area_tag :content,nil,:class=> 'form-control' %><br />
+  </div><hr >
+  
+  <%= submit_tag 'submit',:class=> 'btn btn-default' %>
+
+<% end %>
