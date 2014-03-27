@@ -5,6 +5,7 @@ class MainController < ApplicationController
   def projects
   	@mypjts = Project.all
     @randvar = ['right','Wrong','alert']
+    @count = Request.where('status=?','new').count
   end
   def create
     if params[:upload][:file]

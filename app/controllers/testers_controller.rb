@@ -1,6 +1,7 @@
 class TestersController < ApplicationController
+  before_filter :authenticate
   def index
-  	@requests = Request.all
+  	@requests = Request.all.order(created_at: :desc)
   end
 
   def initiate
@@ -28,4 +29,13 @@ class TestersController < ApplicationController
     end
 
   end
+
+
+  private
+   def authenticate
+    authenticate_or_request_with_http_basic do |username , password|
+      username == 'tester' && password == 'password'
+    end
+
+   end
 end

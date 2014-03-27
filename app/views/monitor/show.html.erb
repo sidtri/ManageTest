@@ -1,8 +1,10 @@
-
+<div style="overflow:auto">
 <div class='highlight'><center><b><%= Project.find(params[:id]).name%></b></center></div>
 
-<span class="badge pull-right">0</span>
-<%=link_to 'Inbox',tester_index_path,:class=>'btn btn-default pull-right' %>
+
+<a class="btn btn-info pull-right" style="padding-right:20px;margin-left:10px" href="/testers/index">Inbox <span class="badge"><%=@count %></span></a>
+
+<%=link_to 'Test Request',test_request_path(params[:id]),:class=>'btn btn-default pull-right' %>
 
 
 <ol class="breadcrumb pull-left">
@@ -10,6 +12,24 @@
   <li><a href="<%=initiate_path %>">Testers</a></li>
   <li class="tester_index_path">Data</li>
 </ol>
+<%if @req!=nil %>
+<div class="block" style="border:1px solid #e3e3e3;padding-top:5px;padding-bottom:5px;margin-bottom:5px;border-radius:4px;padding-left:8px;padding-right:8px;clear:both">
+	<p><span class="code"><%= @req.project.name %></span> <%= @req.status %></p>
+		<%= @req.content %>
+	<p style="color:#999">From: <%= @req.dev %> Assigned on <%= @req.created_at.strftime('%d - %m - %Y')%></p>
+</div>
+
+	<%end %>
+	<%if @req!=nil %>
+		<%if @req.acknowledge!=nil %>
+	<section style='padding-left:45px'>
+	<span class='code'>----></span>&emsp;<span>Proper Documents <%= (@req.acknowledge.docs==1) ? 'Provided' : 'Not Provided' %></span><br>
+	<span class='code'>----></span>&emsp;<span>Time Provided is<%=  (@req.acknowledge.time==1) ? 'sufficient' : 'Not Sufficient' %></span><br>
+	<span class='code'>----></span>&emsp;<span>Resources are <%= (@req.acknowledge.resources==1) ? 'Available' : 'Not available' %></span><br>
+	</section>
+	<hr>
+	<%end %>
+	<%end %>
 
 <table class='table'>
 <caption class="text-left" style="color:#679BB7;">Test Progress</caption>
@@ -39,3 +59,4 @@
 <%if @down!=nil %>
 <div class='imgforheader'><h4 style='padding-left:100px;min-height:40px;padding-top:15px;width:500px'> <a href='/images/upload/<%=@down.kick %>'>Kickoff MOM</a></h4></div>
 <%end %>
+</div>

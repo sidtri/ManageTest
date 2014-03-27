@@ -6,7 +6,9 @@ class MonitorController < ApplicationController
   def show
     @down = Fil.where('project_id=?',params[:id]).first
     @initiation = Test.where('project_id=?',params[:id])
-
+    @count = Request.where('status=?','new').count
+    @ack = Acknowledge.find_by_project_id(params[:id])
+    @req = Request.where('project_id=?',params[:id]).last
   end
 
   def new
@@ -16,7 +18,7 @@ class MonitorController < ApplicationController
   def create
   	@req = Request.new(:dev=>params[:name],:content=>params[:content],:status=>'new',:project_id=>params[:id])
     if @req.save!
-      redirect_to root_url
+      redirect_to root_url, :notice => 'Request sent to Tester\'s inbox successfully '
     end
   end
   private

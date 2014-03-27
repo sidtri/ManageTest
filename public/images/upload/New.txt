@@ -1,0 +1,1 @@
+During early phases of the project, as we gather more information, we revise our plans. As the project evolves and situations change, we adapt our plans. By updating the plan at major milestone helps us to keep testing aligned with project needs. As we run the tests, we make final changes to our plans based on the results.

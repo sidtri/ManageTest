@@ -25,5 +25,14 @@ jQuery(document).ready(function(){
 </script>
 
 
+<!-- This block is for alerts  -->
+	<% flash.each do |key, value| %>
+	<div style='color:green;background-color:white;position:absolute;bottom:0px;left:0px;right:0px'>
+	 <div class="alert alert-<%=key%>"><%= value %></div>
+	 </div>
+	<% end %>
+	
+
+
 </body>
 </html>
